@@ -6,6 +6,13 @@ from .serializers import UserSerializer, ProjectSerializer, ProjectMemberSeriali
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    
+    def get_permissions(self):
+        if self.action == 'create':
+            self.permission_classes = [AllowAny]
+        else:
+            self.permission_classes = [IsAuthenticated]
+        return super().get_permissions()
 
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()

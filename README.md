@@ -54,6 +54,41 @@ Request:
     "password": "securepassword123"
 }
 ```
+Response:
+```bash
+
+{
+    "access": "your_access_token",
+    "refresh": "your_refresh_token"
+}
+```
+
+
+
+# Use Token to Access All Protected Routes
+Use the JWT token obtained from the login endpoint to access protected routes by including it in the Authorization header.
+
+## Example:
+
+- Get User Details (GET /api/users/{id}/)
+
+In Headers:
+
+```bash
+Authorization: Bearer your_access_token
+```
+Response:
+
+```bash
+{
+    "id": 1,
+    "username": "newuser",
+    "email": "newuser@example.com",
+    ...
+}
+```
+
+
 - Get User Details (GET /api/users/{id}/): Retrieve details of a specific user.
 
 - Update User (PUT/PATCH /api/users/{id}/): Update user details.
